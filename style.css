@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
-h1 {
+.name {
   color: #4756df !important;
 }
 
@@ -13,6 +13,7 @@ p {
 body {
   font-family: "Roboto", serif;
   background-color: #121212 !important;
+  background: url("images/blur.png") center/cover no-repeat;
 }
 
 .navbar {
@@ -25,4 +26,28 @@ body {
 
 .btn-link {
   color: #e0e0e0 !important;
+}
+
+.underline::after {
+  content: "";
+  display: block;
+  width: 40rem;
+  height: 0.05rem;
+  background-color: rgba(244, 244, 244, 0.3);
+  margin: 2rem auto 0;
+}
+
+.social-icon {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  outline: none;
+  text-decoration: none;
+  border: none;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.social-icon i {
+  font-size: 40px;
 }
