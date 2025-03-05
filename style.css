@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+h1 {
+  color: #4756df !important;
+}
+
+h2 {
+  color: #e0e0e0 !important;
+}
+
+p {
+  color: #e0e0e0 !important;
+}
+body {
+  font-family: "Roboto", serif;
+  background-color: #121212 !important;
+}
+
+.navbar {
+  font-family: "Playfair Display", serif;
+}
+
+.introSpace {
+  margin-top: 10rem;
+}
+
+.btn-link {
+  color: #e0e0e0 !important;
+}
