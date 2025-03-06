@@ -26,6 +26,8 @@ body {
   margin-top: 10rem;
 }
 
+
+
 .btn-link {
   color: #e0e0e0 !important;
 }
@@ -33,7 +35,7 @@ body {
 .underline::after {
   content: "";
   display: block;
-  width: 40rem;
+  width: 90%;
   height: 0.05rem;
   background-color: rgba(244, 244, 244, 0.3);
   margin: 2rem auto 0;
@@ -103,5 +105,3 @@ footer {
 .nav-text {
   color: #b197fc !important;
 }
-
-
