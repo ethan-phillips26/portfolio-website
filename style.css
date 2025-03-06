@@ -86,10 +86,14 @@ div [class^="col-"] {
   border: #e0e0e0;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
 }
 
 .nav-canvas {
@@ -99,3 +103,5 @@ div [class^="col-"] {
 .nav-text {
   color: #b197fc !important;
 }
+
+
