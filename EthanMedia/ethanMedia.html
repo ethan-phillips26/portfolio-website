@@ -4,14 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -26,26 +18,25 @@
     <title>Ethan Phillips</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-      <div
-        class="container-fluid d-flex justify-content-between align-items-center"
-      >
-        <a class="navbar-brand d-flex align-items-center" href="#">
-          <i class="fa-solid fa-code me-2" style="color: #b197fc"></i>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand">Ethan Phillips</a>
 
-          Ethan Phillips
-        </a>
-
-        <div class="d-flex align-items-center">
-          <p class="mb-0 me-3">Hello <span id="userName"></span>!</p>
-
-          <button class="btn btn-outline-primary" id="signInButton">
-            Sign In
-          </button>
-
-          <button class="btn btn-outline-danger ms-2" id="signOutButton">
-            Sign Out
-          </button>
+        <div class="dropdown">
+          <span id="userName">Guest</span>
+          <img
+            id="profilePicture"
+            src="default-avatar.jpeg"
+            class="rounded-circle"
+            width="40"
+            height="40"
+            data-bs-toggle="dropdown"
+          />
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="#" id="authAction">Sign In</a>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
@@ -67,7 +58,7 @@
         </div>
 
         <img
-          src="texasImages/renoEating.jpg"
+          src="texasImages/wallp.png"
           class="card-img-top"
           alt="Post Image"
         />
@@ -77,9 +68,10 @@
             <div>
               <strong>Description: </strong>
               <p>Reno is a funny guy eating shrimp</p>
-              <button class="btn btn-light">
+              <button id="like1" class="btn btn-light">
                 <i class="bi bi-heart"></i> Like
               </button>
+
               <button class="btn btn-light">
                 <i class="bi bi-chat-dots"></i> Comment
               </button>
@@ -90,7 +82,7 @@
           </div>
 
           <div class="mt-2">
-            <strong>0.000 likes</strong>
+            <span id="likeCount-post1">0 Likes</span>
           </div>
 
           <div class="mt-3">
@@ -116,74 +108,17 @@
         </div>
       </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js"></script>
 
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
-      import {
-        getAuth,
-        GoogleAuthProvider,
-        signInWithPopup,
-        signOut,
-        onAuthStateChanged,
-      } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
+    <script type="module" src="app.js"></script>
 
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyDICNGtnlULh0gXg9-TUmSq8aFiahGlyA0",
-        authDomain: "socialethan-2596d.firebaseapp.com",
-        projectId: "socialethan-2596d",
-        storageBucket: "socialethan-2596d.firebasestorage.app",
-        messagingSenderId: "718319759019",
-        appId: "1:718319759019:web:138c6797cb869a9d4651ee",
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth();
-      const provider = new GoogleAuthProvider();
-
-      const signInButton = document.getElementById("signInButton");
-      const signOutButton = document.getElementById("signOutButton");
-      const message = document.getElementById("message");
-      const userName = document.getElementById("userName");
-
-      const userSignIn = async () => {
-        signInWithPopup(auth, provider)
-          .then((result) => {
-            const user = result.user;
-            console.log(user);
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-          });
-      };
-
-      const userSignOut = async () => {
-        signOut(auth)
-          .then(() => {
-            alert("You have signed out successfully");
-          })
-          .catch((error) => {});
-      };
-
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          signOutButton.style.display = "block";
-          signInButton.style.display = "none";
-          userName.innerHTML = user.displayName;
-        } else {
-          signOutButton.style.display = "none";
-          signInButton.style.display = "block";
-          userName.innerHTML = "Guest";
-        }
-      });
-
-      signInButton.addEventListener("click", userSignIn);
-      signOutButton.addEventListener("click", userSignOut);
-    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
